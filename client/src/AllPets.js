@@ -18,7 +18,7 @@ class AllPets extends Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:8000/api/pets")
+    axios.get("/api/pets")
       .then(res => this.setState({pets: res.data}))
       .catch(err => console.log(err));
   }

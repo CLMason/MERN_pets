@@ -32,7 +32,7 @@ class EditPet extends Component {
 
   componentDidMount() {
     let _id = this.props.match.params._id;
-    axios.get(`http://localhost:8000/api/pets/edit/${_id}`)
+    axios.get(`api/pets/edit/${_id}`)
       .then(res => {
         console.log(res);
         this.setState({pet: res.data});
@@ -74,7 +74,7 @@ class EditPet extends Component {
   updatePet = e => {
     e.preventDefault();
     let _id = this.props.match.params._id;
-    axios.put(`http://localhost:8000/api/pets/edit/${_id}`, this.state.pet)
+    axios.put(`api/pets/edit/${_id}`, this.state.pet)
       .then(res => {
         if(res.data.errors) {
           this.setState({errors: res.data.errors});

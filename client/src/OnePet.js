@@ -21,7 +21,7 @@ class OnePet extends Component {
   }
   componentDidMount() {
     let _id = this.props.match.params._id;
-    axios.get(`http://localhost:8000/api/pets/view/${_id}`)
+    axios.get(`/api/pets/view/${_id}`)
       .then(res => {
         console.log(res);
         this.setState({ pet: res.data });
@@ -33,9 +33,9 @@ class OnePet extends Component {
     document.querySelector("#likeButton").disabled = true; 
     let _id = this.props.match.params._id;
     this.state.pet.likes = this.state.pet.likes + 1; 
-    axios.put(`http://localhost:8000/api/pets/edit/${_id}`, this.state.pet)
+    axios.put(`/api/pets/edit/${_id}`, this.state.pet)
       .then(res => {
-        axios.get(`http://localhost:8000/api/pets/view/${_id}`)
+        axios.get(`/api/pets/view/${_id}`)
         .then(res => {
           console.log(res);
           this.setState({ pet: res.data });
@@ -48,7 +48,7 @@ class OnePet extends Component {
   adoptPet = e =>{
       e.preventDefault();
       let _id = this.props.match.params._id;
-      axios.delete(`http://localhost:8000/api/pets/delete/${_id}`)
+      axios.delete(`/api/pets/delete/${_id}`)
         .then(res =>{
             console.log(res);
             this.props.history.push("/")
